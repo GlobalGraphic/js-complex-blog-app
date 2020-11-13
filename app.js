@@ -15,5 +15,4 @@ app.set('view engine', 'ejs');
 // router handler
 app.use('/',router);
 
-// app listening for specific PORT
-app.listen(2028);
+module.exports = app;
