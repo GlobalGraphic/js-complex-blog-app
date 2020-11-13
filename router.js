@@ -11,4 +11,7 @@ router.post('/register', userController.register);
 // * handle login FN
 router.post('/login', userController.login);
 
+// * handle logout FN
+router.post('/logout', userController.logout);
+
 module.exports = router;
