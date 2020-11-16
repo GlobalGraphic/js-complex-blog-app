@@ -19,8 +19,13 @@ let sessionOptions = session({
 });
 
 app.use(sessionOptions);
-
 app.use(flash());
+
+// ! run this FN for every request
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    next();
+})
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
