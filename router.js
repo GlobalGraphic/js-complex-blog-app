@@ -17,6 +17,9 @@ router.post('/login', userController.login);
 // * handle logout FN
 router.post('/logout', userController.logout);
 
+// ! user profile related routes
+router.get('/profile/:username', userController.ifUserExists, userController.profilePostsScreen)
+
 // ! post related routes
 
 // * handle create post FN

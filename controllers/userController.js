@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Post = require('../models/Post');
 
 exports.login = (req , res) => {
     let user = new User(req.body);
@@ -55,4 +56,26 @@ exports.mustBeLoggedIn = (req, res, next) => {
             res.redirect('/');
         });
     }
+}
+
+exports.ifUserExists = (req, res, next) => {
+    User.findByUsername(req.params.username).then(userDocument => {
+        req.profileUser = userDocument;
+        next();
+    }).catch(() => {
+        res.render('404');
+    });
+}
+
+exports.profilePostsScreen = (req ,res) => {
+    // * ask our post model for posts by a certain author id
+    Post.findByAuthorId(req.profileUser._id).then(posts => {
+        res.render('profile', {
+            posts: posts,
+            profileUsername: req.profileUser.username,
+            profileAvatar: req.profileUser.avatar
+        });
+    }).catch(() => {
+        res.render('404');
+    });
 }
