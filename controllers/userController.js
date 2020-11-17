@@ -3,7 +3,7 @@ const User = require('../models/User');
 exports.login = (req , res) => {
     let user = new User(req.body);
     user.login().then(result => {
-        req.session.user = {username: user.data.username, avatar: user.avatar};
+        req.session.user = {username: user.data.username, avatar: user.avatar, _id: user.data._id};
         req.session.save(() => {
             res.redirect('/');
         });
@@ -18,7 +18,7 @@ exports.login = (req , res) => {
 exports.register = (req, res) => {
     let user = new User(req.body);
     user.register().then(() => {
-        req.session.user = {username:user.data.username, avatar: user.avatar};
+        req.session.user = {username:user.data.username, avatar: user.avatar, _id: user.data._id};
         req.session.save(() => {
             res.redirect('/');
         });

@@ -3,9 +3,11 @@ const bcrypt = require('bcryptjs');
 const md5 = require('md5');
 const validator = require('validator');
 
-let User = function(data){
+let User = function(data, getAvatar){
     this.data = data;
     this.errors = [];
+    if(getAvatar == undefined){ getAvatar = false}
+    if(getAvatar){ this.getAvatar() }
 }
 
 // ! helper cleanup FN for submiting the data to the db to make sure the response is only string 
