@@ -23,6 +23,10 @@ app.use(flash());
 
 // ! run this FN for every request
 app.use((req, res, next) => {
+    // * make all error and success flash messages available from all templates
+    res.locals.errors = req.flash("errors");
+    res.locals.success = req.flash("success");
+
     // * make current user id available on the req object
     if(req.session.user) { req.visitorId = req.session.user._id } else { req.visitorId = 0 }
 
