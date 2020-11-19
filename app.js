@@ -3,6 +3,7 @@ const router = require('./router');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
+const markdown = require('marked');
 const app = express();
 
 
@@ -23,6 +24,11 @@ app.use(flash());
 
 // ! run this FN for every request
 app.use((req, res, next) => {
+    // * make our markdown fn available from within ejs template
+    res.locals.filterUserHTML = content => {
+        return markdown(content);
+    }
+
     // * make all error and success flash messages available from all templates
     res.locals.errors = req.flash("errors");
     res.locals.success = req.flash("success");

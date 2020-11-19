@@ -32,9 +32,9 @@ router.post('/create-post', userController.mustBeLoggedIn, postController.create
 router.get('/post/:id', postController.viewSingle);
 
 // * handle editing post
-router.get('/post/:id/edit', postController.viewEditScreen);
+router.get('/post/:id/edit', userController.mustBeLoggedIn, postController.viewEditScreen);
 
 // * handle saving edited post into db
-router.post('/post/:id/edit', postController.edit);
+router.post('/post/:id/edit', userController.mustBeLoggedIn, postController.edit);
 
 module.exports = router;
