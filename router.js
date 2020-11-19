@@ -40,4 +40,7 @@ router.post('/post/:id/edit', userController.mustBeLoggedIn, postController.edit
 // * handle deleting single post
 router.post('/post/:id/delete', userController.mustBeLoggedIn, postController.delete);
 
+// * handle search
+router.post('/search', postController.search);
+
 module.exports = router;
