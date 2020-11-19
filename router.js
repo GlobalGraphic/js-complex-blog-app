@@ -37,4 +37,7 @@ router.get('/post/:id/edit', userController.mustBeLoggedIn, postController.viewE
 // * handle saving edited post into db
 router.post('/post/:id/edit', userController.mustBeLoggedIn, postController.edit);
 
+// * handle deleting single post
+router.post('/post/:id/delete', userController.mustBeLoggedIn, postController.delete);
+
 module.exports = router;
