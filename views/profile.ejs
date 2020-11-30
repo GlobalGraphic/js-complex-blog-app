@@ -5,14 +5,14 @@
   <%- include('includes/flash') %>
   <%- include('includes/profileShared') %>
   
-    <div class="list-group">
-      <% posts.forEach(post => { %>
-        <a href="/post/<%= post._id %>" class="list-group-item list-group-item-action">
-          <img class="avatar-tiny" src="<%= post.author.avatar %>">
-          <strong><%= post.title %></strong> <%= post.createdDate.getDate()%>/<%= post.createdDate.getMonth() + 1 %>/<%= post.createdDate.getFullYear() %>
-        </a>
-      <% })  %>
-    </div>
+  <div class="list-group">
+    <% posts.forEach(post => { %>
+      <a href="/post/<%= post._id %>" class="list-group-item list-group-item-action">
+        <img class="avatar-tiny" src="<%= post.author.avatar %>">
+        <strong><%= post.title %></strong> <%= post.createdDate.getDate()%>/<%= post.createdDate.getMonth() + 1 %>/<%= post.createdDate.getFullYear() %>
+      </a>
+    <% })  %>
   </div>
+</div>
 
-  <%- include('includes/footer') %>
+<%- include('includes/footer') %>
